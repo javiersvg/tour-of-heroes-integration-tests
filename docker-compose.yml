@@ -1,0 +1,48 @@
+version: '3.6'
+services:
+  selenium-hub:
+    image: selenium/hub:3.141.59-titanium
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+  chrome:
+    image: selenium/node-chrome:3.141.59-titanium
+    volumes:
+      - /dev/shm:/dev/shm
+      - ./hosts:/etc/hosts
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+  firefox:
+    image: selenium/node-firefox:3.141.59-titanium
+    volumes:
+      - /dev/shm:/dev/shm
+      - ./hosts:/etc/hosts
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+  google:
+    image: node:12
+    ports:
+      - "2525:2525"
+    volumes:
+      - ./mountebank:/mountebank
+    command: bash -c "npm install -g mountebank && mb --configfile mountebank/imposters.ejs"
+  tour-of-heroes-service:
+    container_name: tour-of-heroes
+    image: springcloud/spring-cloud-contract-stub-runner:2.2.0.BUILD-SNAPSHOT
+    environment:
+      - STUBRUNNER_STUBS_MODE=LOCAL
+      - STUBRUNNER_IDS=com.javiersvg:tour-of-heroes:+:8080
+    volumes:
+      - "~/.m2/:/root/.m2/:ro"
+  tour-of-heroes-front-end:
+    image: javiersvg/angular-tour-of-heroes:development
+    ports:
+      - "4200:80"
+    depends_on:
+      - tour-of-heroes-service

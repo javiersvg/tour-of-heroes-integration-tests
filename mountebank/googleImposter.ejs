@@ -1,0 +1,33 @@
+{
+  "port": 443,
+  "protocol": "https",
+  "key": "<%- stringify(filename, 'accounts.google.com-key.pem') %>",
+  "cert": "<%- stringify(filename, 'accounts.google.com.pem') %>",
+  "stubs": [
+    {
+      "predicates": [
+        {
+          "equals": {
+            "method": "GET",
+            "path": "/o/oauth2/auth"
+          }
+        }
+      ],
+      "responses": [
+        {
+          "is": {
+            "statusCode": 200,
+            "body": "<%- stringify(filename, 'loginPageImposter.html') %>"
+          }
+        }
+      ]
+    },
+    {
+      "responses": [
+        {
+          "is": { "statusCode": 404 }
+        }
+      ]
+    }
+  ]
+}
