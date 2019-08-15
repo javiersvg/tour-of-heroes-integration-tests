@@ -1,11 +1,10 @@
 package starter.login;
 
+import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.DriverTask;
-import net.serenitybdd.screenplay.actions.Switch;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Iterator;
@@ -13,7 +12,7 @@ import java.util.function.Consumer;
 
 public class LogInFor {
 
-    private static final String SIGN_IN_GOOGLE_ACCOUNTS_WINDOW_TITLE = "Sign in - Google Accounts";
+    private static final String SIGN_IN_GOOGLE_ACCOUNTS_WINDOW_TITLE = "Log in page";
     private static final Consumer<WebDriver> webDriverConsumer = webDriver -> {
         Iterator<String> iterator = webDriver.getWindowHandles().iterator();
         do {
@@ -28,7 +27,7 @@ public class LogInFor {
         return Task.where("{0} attempts to log in",
                 Click.on(LoginButton.LOGIN_BUTTON.getBy()),
                 new DriverTask(webDriverConsumer),
-                Click.on(By.partialLinkText("Javier"))
+                Click.on(By.tagName("input"))
         );
     }
 }
