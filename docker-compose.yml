@@ -41,6 +41,7 @@ services:
     image: node:12
     ports:
       - "2525:2525"
+      - "443:443"
     volumes:
       - ./mountebank:/mountebank
     command: bash -c "npm install -g mountebank && mb --configfile mountebank/imposters.ejs"

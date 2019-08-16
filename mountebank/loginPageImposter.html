@@ -4,7 +4,8 @@
     <title>Log in page</title>
     <script language="Javascript">
         var auth = {
-            "method": "fireIdpEvent", "params": {
+            "method": "fireIdpEvent",
+            "params": {
                 "type": "authResult",
                 "clientId": "204566820246-67tser74gtv78uiaskm945enn5b5agl2.apps.googleusercontent.com",
                 "id": "auth144115",
@@ -14,8 +15,23 @@
                     "login_hint": "AJDLj6JUa8yxXrhHdWRHIV0S13cAf6i36nZJb-9EMBYsODpDedqlifoBgLNqAHjtbn5aZ5yqZZyE2_KMgELfWOe2SVb7dnB0jw",
                     "client_id": "204566820246-67tser74gtv78uiaskm945enn5b5agl2.apps.googleusercontent.com"
                 }
-            }, "rpcToken": "795162313.5098065"
+            },
+            "rpcToken": "795162313.5098065"
         };
+        var auth2 = {
+            "method": "fireIdpEvent",
+            "params": {
+                "type": "sessionSelectorChanged",
+                "newValue": {
+                    "hint": "AJDLj6JUa8yxXrhHdWRHIV0S13cAf6i36nZJb-9EMBYsODpDedqlifoBgLNqAHjtbn5aZ5yqZZyE2_KMgELfWOe2SVb7dnB0jw",
+                    "disabled": false
+                },
+                "domain": "http://localhost:4200",
+                "crossSubDomains": true
+            },
+            "rpcToken": "276005372.66739374"
+        };
+
         var token = {
             "id": "495-729344.0206908908", "result": {
                 "token_type": "Bearer",
@@ -33,11 +49,12 @@
             console.log("NEW EVENT: ----> " + event.data);
             window.opener.postMessage(JSON.stringify(token), "http://localhost:4200");
             self.close();
-        }
+        };
         window.addEventListener("message", listen)
 
         function login() {
             window.opener.postMessage(JSON.stringify(auth), "http://localhost:4200");
+            window.opener.postMessage(JSON.stringify(auth2), "http://localhost:4200");
         }
     </script>
 </head>
