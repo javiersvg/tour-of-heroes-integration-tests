@@ -3,6 +3,42 @@
 <head>
     <title>Log in page</title>
     <script language="Javascript">
+        var first = {
+            "method": "fireIdpEvent",
+            "params": {
+                "type": "sessionStateChanged",
+                "clientId": "204566820246-67tser74gtv78uiaskm945enn5b5agl2.apps.googleusercontent.com"
+            },
+            "rpcToken": "719728879.0778196"
+        };
+        var second = {
+            "method": "fireIdpEvent", "params": {
+                "type": "authResult",
+                "clientId": "204566820246-67tser74gtv78uiaskm945enn5b5agl2.apps.googleusercontent.com",
+                "id": "auth328543",
+                "authResult": {
+                    "scope": "email profile https://www.googleapis.com/auth/userinfo.profile openid https://www.googleapis.com/auth/userinfo.email",
+                    "id_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImY2ZjgwZjM3ZjIxYzIzZTYxZjJiZTQyMzFlMjdkMjY5ZDY2OTUzMjkiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMjA0NTY2ODIwMjQ2LTY3dHNlcjc0Z3R2Nzh1aWFza205NDVlbm41YjVhZ2wyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMjA0NTY2ODIwMjQ2LTY3dHNlcjc0Z3R2Nzh1aWFza205NDVlbm41YjVhZ2wyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTAxOTExOTc3MTk0OTA4NjU3MzE0IiwiZW1haWwiOiJqYXZpZXIuc3ZnQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJpYXQiOjE1NjcyOTM4NjMsImV4cCI6MTU2NzI5NzQ2MywianRpIjoiOWFjNzk2ZjUxMjg5MjRmYTZiMTYzYjcwNWY4ZjE3MzYzMjU5MjJkYyJ9.oSX06E6DNuqjYppcfG9rQ5-LQwoiGCzC2pz6P4aU7voTDxla77QI5CPT4wo13DOfYkIl0ELXlCLGdRhXRSi5brxluj4_T8pXra1TXMmVTmy7iXHARbiZUb6EfutiYQEfbqNceTaTKbbGApVnTFOb04rTEjH-1kEzWJAiHzDwyieZS_iGTF6RtKp3cJ880H0IF22DHuOn_L6kaxvsE6qkEJXqIMFFsg4ore7HJkzR_6XPZ9m-Om7yTtbdx1xXfqI-0njIjiHnqdzEMDRG2rLGmuaMAUbiMAagb3DAywrSLCPuWQMQuH45rn6vRBSs98HnWpP4GWq0X27orAfreQuS7A",
+                    "login_hint": "AJDLj6JUa8yxXrhHdWRHIV0S13cAf6i36nZJb-9EMBYsODpDedqlifoBgLNqAHjtbn5aZ5yqZZyE2_KMgELfWOe2SVb7dnB0jw",
+                    "client_id": "204566820246-67tser74gtv78uiaskm945enn5b5agl2.apps.googleusercontent.com"
+                }
+            }, "rpcToken": "2127703797.8977408"
+        };
+
+        var third = {
+            "method": "fireIdpEvent",
+            "params": {
+                "type": "sessionSelectorChanged",
+                "newValue": {
+                    "hint": "AJDLj6JUa8yxXrhHdWRHIV0S13cAf6i36nZJb-9EMBYsODpDedqlifoBgLNqAHjtbn5aZ5yqZZyE2_KMgELfWOe2SVb7dnB0jw",
+                    "disabled": false
+                },
+                "domain": "http://localhost:4200",
+                "crossSubDomains": true
+            },
+            "rpcToken": "2127703797.8977408"
+        };
+
         var auth = {
             "method": "fireIdpEvent",
             "params": {
@@ -53,8 +89,10 @@
         window.addEventListener("message", listen)
 
         function login() {
-            window.opener.postMessage(JSON.stringify(auth), "http://localhost:4200");
-            window.opener.postMessage(JSON.stringify(auth2), "http://localhost:4200");
+            var opener = window.opener;
+            opener.postMessage(JSON.stringify(first), "http://localhost:4200");
+            opener.postMessage(JSON.stringify(second), "http://localhost:4200");
+            opener.postMessage(JSON.stringify(third), "http://localhost:4200");
         }
     </script>
 </head>

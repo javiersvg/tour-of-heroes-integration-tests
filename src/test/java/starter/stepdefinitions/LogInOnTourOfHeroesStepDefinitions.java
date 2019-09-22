@@ -26,6 +26,8 @@ public class LogInOnTourOfHeroesStepDefinitions {
 
     @When("she/he logs in")
     public void logs_in() {
+        withCurrentActor(LogInFor.oauth());
+        withCurrentActor(NavigateTo.theGoogleLoginPage());
         withCurrentActor(LogInFor.actor());
     }
 

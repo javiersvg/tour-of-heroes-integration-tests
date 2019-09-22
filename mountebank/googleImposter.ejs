@@ -5,27 +5,12 @@
   "cert": "<%- stringify(filename, 'accounts.google.com.pem') %>",
   "stubs": [
     {
-      "predicates": [
-        {
-          "equals": {
-            "method": "GET",
-            "path": "/o/oauth2/auth"
-          }
-        }
-      ],
       "responses": [
         {
-          "is": {
-            "statusCode": 200,
-            "body": "<%- stringify(filename, 'loginPageImposter.html') %>"
+          "proxy": {
+            "to": "https://accounts.google.com",
+            "mode": "proxyAlways"
           }
-        }
-      ]
-    },
-    {
-      "responses": [
-        {
-          "is": { "statusCode": 404 }
         }
       ]
     }

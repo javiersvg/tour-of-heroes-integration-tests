@@ -17,4 +17,8 @@ public class NavigateTo  {
                 Open.browserOn().the(TourOfHeroesHomePage.class)
         );
     }
+
+    public static Performable theGoogleLoginPage() {
+        return Switch.toWindow("Sign in - Google Accounts");
+    }
 }

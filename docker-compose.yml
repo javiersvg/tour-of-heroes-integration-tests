@@ -45,6 +45,8 @@ services:
     volumes:
       - ./mountebank:/mountebank
     command: bash -c "npm install -g mountebank && mb --configfile mountebank/imposters.ejs"
+    extra_hosts:
+      - "accounts.google.com:216.58.193.141"
     networks:
       tour-of-heroes-net:
         aliases:
