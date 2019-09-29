@@ -6,7 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
-import starter.login.LogInFor;
+import starter.login.LogInTo;
 import starter.navigation.NavigateTo;
 
 import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
@@ -26,9 +26,9 @@ public class LogInOnTourOfHeroesStepDefinitions {
 
     @When("she/he logs in")
     public void logs_in() {
-        withCurrentActor(LogInFor.oauth());
+        withCurrentActor(LogInTo.oauth());
         withCurrentActor(NavigateTo.theGoogleLoginPage());
-        withCurrentActor(LogInFor.actor());
+        withCurrentActor(LogInTo.google());
     }
 
     @Then("the profile picture can be seen")

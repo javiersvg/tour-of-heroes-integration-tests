@@ -13,12 +13,13 @@ public class NavigateTo  {
     }
 
     public static Performable theTourOfHeroesHomePage() {
-        return Task.where("AngularTourOfHeroes",
+        return Task.where("{0} opens the AngularTourOfHeroes home page",
                 Open.browserOn().the(TourOfHeroesHomePage.class)
         );
     }
 
     public static Performable theGoogleLoginPage() {
-        return Switch.toWindow("Sign in - Google Accounts");
+        return Task.where("{0} switches to the google login page",
+                Switch.browserTo().the(GoogleAccountsPage.class));
     }
 }
