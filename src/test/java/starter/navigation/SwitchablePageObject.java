@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -25,10 +26,14 @@ public abstract class SwitchablePageObject extends PageObject {
     }
 
     public void switchToWindow(){
-        String startingUrl = this.pageUrls.getDeclaredDefaultUrl().get();
+        String startingUrl = getDeclaredDefaultUrl().get();
         this.switchToOpenWindow(startingUrl, WebDriver::getCurrentUrl);
         this.addJQuerySupport();
         this.callWhenPageOpensMethods();
+    }
+
+    Optional<String> getDeclaredDefaultUrl() {
+        return this.pageUrls.getDeclaredDefaultUrl();
     }
 
     public void switchToOpenWindow(String identifier, Function<WebDriver, String> getIdentifier) {
