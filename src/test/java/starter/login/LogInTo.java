@@ -20,7 +20,7 @@ public class LogInTo {
                 SendKeys.of("tourofheroestest").into(GoogleLoginForm.GOOGLE_EMAIL_INPUT.getBy()),
                 Click.on(GoogleLoginForm.GOOGLE_NEXT_BUTTON.getBy()),
                 WaitUntil.the(GoogleLoginForm.GOOGLE_PASSWORD_INPUT.getBy(), WebElementStateMatchers.isEnabled()),
-                SendKeys.of("Test1234!").into(GoogleLoginForm.GOOGLE_PASSWORD_INPUT.getBy()),
+                SendKeys.of("*********").into(GoogleLoginForm.GOOGLE_PASSWORD_INPUT.getBy()),
                 Click.on(GoogleLoginForm.GOOGLE_PASSWORD_BUTTON.getBy()),
                 WaitUntilPage.the(GoogleAccountsPage.class, getIsPageAvailableMatcher()).forNoMoreThan(10).seconds()
         );
