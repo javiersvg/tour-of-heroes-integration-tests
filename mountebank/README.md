@@ -7,9 +7,6 @@
 ```npm install -g mountebank```
 
 # start mountebank
-```mb start```
-
-# Post imposter with postman
-```POST: localhost:2525/imposters``` with ```postmanbody.json```
+```mb start --configfile mountebank/imposters.ejs```
 
 # Install locally trusted certs
