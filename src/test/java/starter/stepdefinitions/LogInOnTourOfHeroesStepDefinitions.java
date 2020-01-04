@@ -7,10 +7,12 @@ import cucumber.api.java.en.When;
 import net.serenitybdd.screenplay.actors.OnStage;
 import net.serenitybdd.screenplay.actors.OnlineCast;
 import starter.login.LogInTo;
+import starter.login.LoginResult;
 import starter.navigation.NavigateTo;
 
-import static net.serenitybdd.screenplay.actors.OnStage.theActorCalled;
-import static net.serenitybdd.screenplay.actors.OnStage.withCurrentActor;
+import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
+import static net.serenitybdd.screenplay.actors.OnStage.*;
+import static org.hamcrest.Matchers.is;
 
 public class LogInOnTourOfHeroesStepDefinitions {
 
@@ -33,7 +35,9 @@ public class LogInOnTourOfHeroesStepDefinitions {
 
     @Then("the profile picture can be seen")
     public void the_profile_picture_can_be_seen() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new cucumber.api.PendingException();
+        theActorInTheSpotlight().should(
+                seeThat("user icon source",
+                        LoginResult.userIconSrc(), is("https://via.placeholder.com/40"))
+        );
     }
 }
