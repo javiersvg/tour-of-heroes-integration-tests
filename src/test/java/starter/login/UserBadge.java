@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public enum UserBadge {
     USER_ICON(By.tagName("img")),
-    USER_NAME(By.id("name"));
+    USER_NAME(By.className("mat-button-wrapper"));
 
     private final By by;
 

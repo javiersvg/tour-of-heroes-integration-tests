@@ -12,6 +12,7 @@ import starter.navigation.NavigateTo;
 
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.actors.OnStage.*;
+import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
 
 public class LogInOnTourOfHeroesStepDefinitions {
@@ -37,7 +38,9 @@ public class LogInOnTourOfHeroesStepDefinitions {
     public void the_profile_picture_can_be_seen() {
         theActorInTheSpotlight().should(
                 seeThat("user icon source",
-                        LoginResult.userIconSrc(), is("https://via.placeholder.com/40"))
+                        LoginResult.userIconSrc(), is("https://via.placeholder.com/40")),
+                seeThat("user name",
+                        LoginResult.userName(), containsString("John Doe"))
         );
     }
 }
