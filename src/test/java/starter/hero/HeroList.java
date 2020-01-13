@@ -3,7 +3,7 @@ package starter.hero;
 import org.openqa.selenium.By;
 
 public enum HeroList {
-    HERO_NAMES(By.className("mat-list-text"));
+    HEROES(By.className("mat-list-item-content"));
 
     private By by;
 

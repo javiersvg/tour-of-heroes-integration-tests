@@ -1,9 +1,10 @@
 package starter.hero;
 
-import net.serenitybdd.core.annotations.findby.By;
+
+import org.openqa.selenium.By;
 
 public enum AddHeroButton {
-    ADD_HERO_BUTTON(By.buttonText("add"));
+    ADD_HERO_BUTTON(By.className("mat-fab"));
 
     private By by;
 

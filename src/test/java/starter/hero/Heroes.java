@@ -7,6 +7,6 @@ import java.util.List;
 
 public class Heroes {
     public static Question<List<String>> names() {
-        return actor -> TextContent.of(HeroList.HERO_NAMES.getBy()).viewedBy(actor).asList();
+        return actor -> TextContent.of(HeroList.HEROES.getBy()).viewedBy(actor).asList();
     }
 }

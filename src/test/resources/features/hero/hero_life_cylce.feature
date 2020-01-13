@@ -7,7 +7,6 @@ Feature: Hero life cycle
     When he adds a Hero
     Then the hero can be seen
 
-  @manual
   Scenario: I delete a Hero
     Given Javier is on the tour of heroes life cycle page
     And he has a Hero
