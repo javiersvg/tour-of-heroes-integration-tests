@@ -21,11 +21,11 @@ function(config) {
                     "_mode": "binary",
                     "_proxyResponseTime": 116
                   };
-    config.logger.info('Inside injection');
+    config.logger.info('Saving id');
     var redirect_uri = config.request.query['redirect_uri'];
     var id = redirect_uri.substring(redirect_uri.indexOf('=') + 1);
     config.logger.info(JSON.stringify(id, null, 4));
     config.state.id = id;
-    config.logger.info('State: ' + config.logger.info(JSON.stringify(config.state, null, 4)));
+    config.logger.info('State: ' + JSON.stringify(config.state, null, 4));
     return response;
 }

@@ -44,9 +44,10 @@ function (config) {
         "_mode": "text",
         "_proxyResponseTime": 660
     };
+    config.logger.info('Returning id');
     if(config.state.called) {
         config.state.called = false;
-        config.logger.info('State: ' + config.logger.info(JSON.stringify(config.state, null, 4)));
+        config.logger.info('State: ' + JSON.stringify(config.state, null, 4));
         second.body = second.body.replace('auth661904', config.state.id);
         return second;
     }
