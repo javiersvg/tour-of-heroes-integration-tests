@@ -3,7 +3,6 @@ package starter.hero;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Performable;
-import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.targets.Target;
 
 import static net.serenitybdd.core.annotations.findby.By.buttonText;
@@ -20,7 +19,7 @@ public class RemoveA {
                         .filter(webElementFacade -> webElementFacade.containsText(name))
                         .findFirst()
                         .<WebElementFacade>map(webElementFacade -> webElementFacade.findBy(buttonText("delete")))
-                        .ifPresent(Click::on);
+                        .ifPresent(WebElementFacade::click);
             }
         };
     }
