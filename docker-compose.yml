@@ -52,16 +52,11 @@ services:
         aliases:
             - google
             - accounts.google.com
-  tour-of-heroes-service:
+  heroes-service:
     container_name: tour-of-heroes
-    image: springcloud/spring-cloud-contract-stub-runner:2.2.0.BUILD-SNAPSHOT
+    image: javiersvg/tour-of-heroes:stubs-development
     ports:
       - "8080:8080"
-    environment:
-      - STUBRUNNER_STUBS_MODE=LOCAL
-      - STUBRUNNER_IDS=com.javiersvg:tour-of-heroes:+:8080
-    volumes:
-      - "~/.m2/:/root/.m2/:ro"
     networks:
       tour-of-heroes-net:
         aliases:
@@ -71,7 +66,7 @@ services:
     ports:
       - "4200:80"
     depends_on:
-      - tour-of-heroes-service
+      - heroes-service
     networks:
       tour-of-heroes-net:
         aliases:
