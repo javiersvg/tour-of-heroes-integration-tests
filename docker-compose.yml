@@ -38,15 +38,9 @@ services:
         aliases:
             - firefox
   google:
-    image: node:12
+    image: javiersvg/google-signin-contract
     ports:
       - "2525:2525"
-      - "443:443"
-    volumes:
-      - ./mountebank:/mountebank
-    command: bash -c "npm install -g mountebank && mb --configfile mountebank/imposters.ejs --allowInjection"
-    extra_hosts:
-      - "accounts.google.com:216.58.193.141"
     networks:
       tour-of-heroes-net:
         aliases:
@@ -74,3 +68,4 @@ services:
 
 networks:
   tour-of-heroes-net:
+    name: tour-of-heroes-net
