@@ -48,7 +48,7 @@ services:
             - accounts.google.com
   heroes-service:
     container_name: tour-of-heroes
-    image: javiersvg/tour-of-heroes:stubs-development
+    image: javiersvg/tour-of-heroes:stubs-latest
     ports:
       - "8080:8080"
     networks:
@@ -56,7 +56,7 @@ services:
         aliases:
             - tour-of-heroes
   tour-of-heroes-front-end:
-    image: javiersvg/angular-tour-of-heroes:development
+    image: javiersvg/angular-tour-of-heroes
     ports:
       - "4200:80"
     depends_on:
