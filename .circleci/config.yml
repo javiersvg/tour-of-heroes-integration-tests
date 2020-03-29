@@ -1,5 +1,5 @@
 jobs:
-  your-job:
+  tour-of-heroes-job:
     executor:
       name: docker/docker
       tag: '3.6'
@@ -42,6 +42,6 @@ orbs:
   docker: circleci/docker@1.0.0
 version: 2.1
 workflows:
-  your-workflow:
+  tour-of-heroes-workflow:
     jobs:
       - your-job
