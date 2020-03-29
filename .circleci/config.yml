@@ -44,4 +44,4 @@ version: 2.1
 workflows:
   tour-of-heroes-workflow:
     jobs:
-      - your-job
+      - tour-of-heroes-job
